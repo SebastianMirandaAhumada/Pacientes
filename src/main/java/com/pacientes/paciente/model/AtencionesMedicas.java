@@ -1,18 +1,46 @@
 package com.pacientes.paciente.model;
 
-public class AtencionesMedicas {
-    private int id;
-    private String tipoConsulta;
-    private String tipoAtencion;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
 
-    public AtencionesMedicas(int id, String tipoConsulta, String tipoAtencion) {
-        this.id = id;
+@Entity
+@Table(name = "atencion")
+
+public class AtencionesMedicas {
+
+    public AtencionesMedicas(String tipoConsulta, String tipoAtencion) {
         this.tipoConsulta = tipoConsulta;
         this.tipoAtencion = tipoAtencion;
-
     }
 
-    public int getId() {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
+    private Long id;
+    @Column(name = "tipoConsulta")
+    private String tipoConsulta;
+    @Column(name = "tipoAtencion")
+    private String tipoAtencion;
+
+    public void setTipoConsulta(String tipoConsulta) {
+        this.tipoConsulta = tipoConsulta;
+    }
+
+    public void setTipoAtencion(String tipoAtencion) {
+        this.tipoAtencion = tipoAtencion;
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "id_paciente")
+    private Pacientes paciente;
+
+    public Long getId() {
         return id;
     }
 
@@ -23,5 +51,4 @@ public class AtencionesMedicas {
     public String getTipoAtencion() {
         return tipoAtencion;
     }
-
 }
