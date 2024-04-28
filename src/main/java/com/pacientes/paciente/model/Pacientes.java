@@ -32,8 +32,21 @@ public class Pacientes {
     public Long getId() {
         return id_paciente;
     }
+
     public void setId(Long id_paciente) {
         this.id_paciente = id_paciente;
+    }
+
+    public void setName(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public void setApellido(String apellido) {
+        this.apellido = apellido;
+    }
+
+    public void setRut(String apellido) {
+        this.apellido = apellido;
     }
 
     public String getRut() {
